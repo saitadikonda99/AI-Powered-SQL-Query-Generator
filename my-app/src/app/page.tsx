@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from './components/navbar'
 
 import Home from './ui/home/home'
+import About from './ui/about/about'
 
 export default function Layout() {
   return (
@@ -11,6 +12,7 @@ export default function Layout() {
             <div className="LayoutComponent-in">
                 <Navbar />
                 <Home />
+                <About />
             </div>
         </div>
   );

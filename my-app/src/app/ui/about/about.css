@@ -1,0 +1,134 @@
+
+
+.AboutComponent {
+    width: 100%;
+}
+
+.AboutComponent-in {
+    width: 100%;
+    padding: 4rem;
+}
+
+.about-one p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.about-one h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.about-one h1 span {
+    color: #ff0000;
+}
+
+.about-two {
+    width: 100%;
+}
+
+.about-two-in {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0rem;
+    gap: 2rem;
+}
+
+.about-two-in-one {
+    width: 50%;
+}
+
+.about-two-in-one p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+    line-height: 2;
+}
+
+.about-two-in-one p span {
+    font-weight: 800;
+    color: rgb(83, 81, 81);
+    background-color: #e4e4e4;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+.about-two-in-two {
+    width: 50%;
+    border: 1px solid #dcdcdc;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+}
+
+.about-two-in-two-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0rem 0rem 2rem 0rem;
+}
+
+.about-two-in-two-one p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    background-color: #e4e4e4;
+    padding: 0.5rem 1rem;
+    border-radius: 1.2rem;
+}
+
+.about-two-in-two-two {
+    width: 80%;
+}
+
+.about-two-in-two-two-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 0rem;
+}
+
+.about-two-in-two-two-two {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% .5rem;
+    background-color: rgb(47, 47, 47);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.about-two-in-two-two-two p {
+    font-size: .8rem;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.about-two-in-two-two-two p svg {
+    font-size: .8rem;
+}
+
+.about-two-in-two-two-three {
+    width: 100%;
+    background-color: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.about-two-in-two-two-four {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 0rem;
+}
