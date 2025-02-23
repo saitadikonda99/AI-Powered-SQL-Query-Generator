@@ -1,12 +1,26 @@
-import React from 'react'
+'use client';
+
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 
 import './navbar.css';
 
+interface UserData {
+    name: string;
+    email: string;
+    password: string;
+}
+
 const Navbar = () => {
 
-    const userData = localStorage.getItem('userData');
-    const userDataObject = JSON.parse(userData || '{}');
+    const [userData, setUserData] = useState<UserData | null>(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+          const storedData = localStorage.getItem("userData");
+          setUserData(storedData ? JSON.parse(storedData) : null);
+        }
+      }, []);
 
   return (
     <div className="NavbarComponent">
@@ -17,7 +31,7 @@ const Navbar = () => {
             <div className="navbar-two">
                 {userData ? (
                     <div className="navbar-two-user">
-                        <p>{userDataObject.name}</p>
+                        <p>{userData.name}</p>
                     </div>
                 ) : (
                     <Link href='/auth/login' className='navbar-two-login'>Login</Link>
