@@ -1,0 +1,48 @@
+.SidebarComponent {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.SidebarComponent.closed {
+    width: 100%; 
+}
+
+.SidebarComponent.open {
+    width: 100%; 
+    background-color: rgb(249, 249, 249);
+}
+
+.SidebarComponent-in {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;  
+}
+
+.sidebar-one.open {
+    width: 100%;
+    padding: 1rem 1rem 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-one.closed {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.sidebar-one.open svg {
+    font-size: 1.5rem;
+    color: #676767;
+    cursor: pointer;  
+}
+
+.sidebar-one.closed svg {
+    font-size: 1.5rem;
+    color: #676767;
+    cursor: pointer;  
+}

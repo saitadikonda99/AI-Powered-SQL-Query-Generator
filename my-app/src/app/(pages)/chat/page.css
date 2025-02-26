@@ -1,0 +1,116 @@
+
+
+.ChatComponent {
+    width: 100%;
+}
+
+.ChatComponent-in {
+    width: 100%;
+    display: flex;
+}
+
+.chat-one.open {
+    width: 18%;
+    transition: width 0.4s ease-in-out; 
+}
+
+.chat-one.closed {
+    width: 10%;
+    height: 100vh;
+    transition: width 0.4s ease-in-out;
+}
+
+.chat-two.open {
+    width: 82%;
+    height: 100vh;
+}
+
+.chat-two.closed {
+    width: 90%;
+    height: 100vh;
+}
+
+.chat-two-in {
+    width: 100%;
+}
+
+.chat-two-one {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-two-one h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #676767;
+}
+
+.chat-two-one p {
+    font-size: 1rem;
+    color: #676767;
+}
+
+.chat-two-two {
+    width: 100%;
+    height: 80vh;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.chat-two-two-one {
+    width: 100%;
+    text-align: center;
+}
+
+.chat-two-two-one h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #676767;
+}
+
+.chat-two-two-two {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d2d0d0;
+    border-radius: 10px;
+    padding: .5rem;
+}
+
+.chat-two-two-two-one {
+    width: 95%;
+}
+
+.chat-two-two-two-one input {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.chat-two-two-two-two {
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-two-two-two-two svg {
+    font-size: 1.8rem;
+    color: #676767;
+    cursor: pointer;
+}
+
+.chat-two-two-two-two svg:hover {
+    color: #000;
+}
