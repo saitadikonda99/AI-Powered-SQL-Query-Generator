@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link';
+import Image from 'next/image';
+import { useSession, signOut } from "next-auth/react";
 
 import './navbar.css';
 
@@ -11,9 +12,16 @@ interface UserData {
     password: string;
 }
 
-const Navbar = () => {
+interface handlers {
+    openSignModel: boolean;
+    setOpenSignModel: (openSignModel: boolean) => void;
+}
+
+const Navbar = ({ openSignModel, setOpenSignModel}: handlers) => {
 
     const [userData, setUserData] = useState<UserData | null>(null);
+
+    const { data: session } = useSession();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -22,6 +30,10 @@ const Navbar = () => {
         }
       }, []);
 
+      const handleAuth = () => {
+        setOpenSignModel(!openSignModel);
+      }
+
   return (
     <div className="NavbarComponent">
         <div className="NavbarComponent-in">
@@ -29,12 +41,21 @@ const Navbar = () => {
                 <h1>OpenQuery <span>AI</span> </h1>
             </div>
             <div className="navbar-two">
-                {userData ? (
-                    <div className="navbar-two-user">
-                        <p>{userData.name}</p>
+                {session ? (
+                    <div className="navbar-two-one">
+                        <Image 
+                            src={session.user?.image || '/user.png'}
+                            alt='user'
+                            width={30}
+                            height={30}
+                        />
+                        <p>{session.user?.name}</p>
+                        <p className='navbar-two-logout' onClick={() => signOut()}>Logout</p>
                     </div>
                 ) : (
-                    <Link href='/auth/login' className='navbar-two-login'>Login</Link>
+                    <div className="navbar-two-two">
+                        <p className='navbar-two-login' onClick={handleAuth} >Login</p>
+                    </div>
                 )}
             </div>
         </div>

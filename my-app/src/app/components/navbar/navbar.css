@@ -34,20 +34,63 @@
 
 .navbar-two {
     width: 50%;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.navbar-two a{
+.navbar-two-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.navbar-two-one img {   
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.navbar-two-one p {
     font-size: 1rem;
-    border: 1px solid black;
-    padding: 0.5rem 1rem;
     border-radius: 5px;
-    text-decoration: none;
     color: black;
     font-weight: 600;
 }
 
-.navbar-two a:hover {
+.navbar-two-logout {
+    font-size: 1rem;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
+}
+
+.navbar-two-logout:hover {
+    background-color: black;
+    color: white;
+}
+
+.navbar-two-two {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-two-two p {
+    font-size: 1rem;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
+}
+
+.navbar-two-two p:hover {
     background-color: black;
     color: white;
 }

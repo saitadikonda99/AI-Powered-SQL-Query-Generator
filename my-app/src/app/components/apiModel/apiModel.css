@@ -1,0 +1,86 @@
+
+
+.apiModelComponent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.apiModelComponent-in {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.apiModel-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.apiModel-one svg {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 800;
+    color: black;
+}
+
+.apiModel-one:hover {
+    background-color: rgb(206, 204, 204);
+}
+
+.apiModel-two {
+    width: 100%;
+}
+
+.apiModel-two h1 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: black;
+}
+
+.apiModel-two p {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: black;
+}
+
+.apiModel-three {
+    width: 100%;
+}
+
+.apiModel-three input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e4e4e4;
+    border-radius: 10px;
+}
+
+.apiModel-three button {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.apiModel-three button:hover {
+    background-color: #e4e4e4;
+    color: black;
+}

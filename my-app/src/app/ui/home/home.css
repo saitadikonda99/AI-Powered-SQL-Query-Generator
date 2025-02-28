@@ -51,7 +51,7 @@
     padding: 2rem 0rem;
 }
 
-.home-one-two a {
+.home-one-two p {
     width: 40%;
     font-size: 1.5rem;
     color: black;
@@ -65,7 +65,7 @@
     padding: .5rem;
 }
 
-.home-one-two a:hover {
+.home-one-two p:hover {
     background-color: black;
     color: white;
 }

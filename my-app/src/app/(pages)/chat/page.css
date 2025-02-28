@@ -1,5 +1,3 @@
-
-
 .ChatComponent {
     width: 100%;
 }
@@ -9,6 +7,7 @@
     display: flex;
 }
 
+/* Sidebar */
 .chat-one.open {
     width: 18%;
     transition: width 0.4s ease-in-out; 
@@ -20,6 +19,7 @@
     transition: width 0.4s ease-in-out;
 }
 
+/* Chat Section */
 .chat-two.open {
     width: 82%;
     height: 100vh;
@@ -35,27 +35,46 @@
 }
 
 .chat-two-one {
-    width: 100%;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.chat-two-one h1 {
+.chat-two-one-one {
+    width: 50%;
+}
+
+.chat-two-one-one h1 {
     font-size: 1.2rem;
     font-weight: 700;
     color: #676767;
 }
 
-.chat-two-one p {
+.chat-two-one-two {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.chat-two-one-two img {   
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chat-two-one-two p {
     font-size: 1rem;
-    color: #676767;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
 }
 
 .chat-two-two {
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
@@ -64,53 +83,76 @@
     gap: 1rem;
 }
 
-.chat-two-two-one {
+.chat-placeholder {
     width: 100%;
+}
+
+.chat-placeholder h1 {
+    font-size: 1.5rem;
     text-align: center;
+    color: #141414;
+    font-weight: 600;
 }
 
-.chat-two-two-one h1 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #676767;
-}
-
-.chat-two-two-two {
+.chat-response {
     width: 80%;
-    margin: 0 auto;
+    height: 90%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    color: black;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow: scroll;
+    padding: 1rem;
+}
+
+.chat-response pre {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd; 
+    display: block; 
+    overflow: visible;
+}
+
+
+.chat-loading {
+    color: #676767;
+    font-size: 1.2rem;
+}
+
+.chat-input-container {
+    width: 80%;
+    display: flex;
     border: 1px solid #d2d0d0;
     border-radius: 10px;
     padding: .5rem;
 }
 
-.chat-two-two-two-one {
+.chat-input {
     width: 95%;
-}
-
-.chat-two-two-two-one input {
-    width: 100%;
     padding: .5rem;
     border-radius: 5px;
     font-size: 1.2rem;
     outline: none;
+    border: none;
 }
 
-.chat-two-two-two-two {
+.chat-send {
     width: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.chat-two-two-two-two svg {
+.chat-send svg {
     font-size: 1.8rem;
     color: #676767;
     cursor: pointer;
 }
 
-.chat-two-two-two-two svg:hover {
+.chat-send svg:hover {
     color: #000;
 }

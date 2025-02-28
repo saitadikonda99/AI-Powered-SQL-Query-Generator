@@ -1,0 +1,45 @@
+.AuthComponent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.AuthComponent-in {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.authComponent-in:hover {
+    transform: scale(1.02);
+}
+
+.auth-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid #e4e4e4;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.auth-one p {
+    font-size: 1rem;
+    font-weight: 800;
+    color: black;
+}

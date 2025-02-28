@@ -1,6 +1,7 @@
 .SidebarComponent {
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .SidebarComponent.closed {
@@ -36,7 +37,7 @@
 }
 
 .sidebar-one.open svg {
-    font-size: 1.5rem;
+    font-size: 1.5rwem;
     color: #676767;
     cursor: pointer;  
 }
@@ -45,4 +46,41 @@
     font-size: 1.5rem;
     color: #676767;
     cursor: pointer;  
+}
+
+
+
+/* sidebar logout button here */
+
+.sidebar-logout {
+    width: 100%; 
+    position: absolute;  
+    bottom: 0;
+    padding: .5rem;
+}
+
+.sidebar-logout p {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.sidebar-logout p svg {
+    font-weight: 600;
+}
+
+.sidebar-logout-icon {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.sidebar-logout p:hover {
+    background-color: rgb(238, 238, 238);
+    color: black;
+    font-weight: 600;
 }

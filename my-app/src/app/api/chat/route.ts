@@ -6,11 +6,15 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export const POST = async (req: NextRequest) => {
     try {
-        const { query } = await req.json();
         
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const { message } = await req.json();
 
-        const response = await model.generateContent(`Generate a SQL query for: ${query}`);
+
+        
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+
+        const response = await model.generateContent(`${message}`);
 
         const aiResponse = response.response.text(); 
 
