@@ -10,12 +10,10 @@ import { toast } from 'react-toastify';
 
 import { useSession } from "next-auth/react";
 
-import Sidebar from "../../components/sidebar/sidebar";
+import Sidebar from "../../../components/sidebar/sidebar";
 import { FaStopCircle } from "react-icons/fa";
 import { FaCircleArrowUp } from "react-icons/fa6";
-import "./page.css";
-import { set } from "mongoose";
-
+import "../page.css";
 
 const Page = () => {
 

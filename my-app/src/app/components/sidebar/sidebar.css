@@ -37,7 +37,7 @@
 }
 
 .sidebar-one.open svg {
-    font-size: 1.5rwem;
+    font-size: 1.5rem;
     color: #676767;
     cursor: pointer;  
 }
@@ -48,7 +48,33 @@
     cursor: pointer;  
 }
 
+.sidebar-two {
+    width: 100%;
+}
 
+.sidebar-two-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.sidebar-two-one p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.sidebar-two-one p:hover {
+    background-color: rgb(238, 238, 238);
+    color: black;
+    font-weight: 600;
+}
 
 /* sidebar logout button here */
 

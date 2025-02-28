@@ -13,6 +13,7 @@ interface handlers {
 }
 
 const Home = ({ openSignModel, setOpenSignModel}: handlers) => {
+    
   const [hoverEffect, setHoverEffect] = useState('bend-right');
 
   const { status } = useSession();

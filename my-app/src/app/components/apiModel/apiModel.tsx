@@ -21,6 +21,8 @@ const ApiModel = ({ setOpenApiModel }: apiModelProps) => {
         if (!apiKey.trim()) return;
         localStorage.setItem("GEMINI_API_KEY", apiKey);
         setApiKey("");
+        setOpenApiModel(false);
+        window.location.reload();
     } 
 
     const handleApiModel = () => {

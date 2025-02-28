@@ -16,7 +16,7 @@
 
 .apiModelComponent-in {
     background: white;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -35,29 +35,36 @@
 
 .apiModel-one svg {
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: black;
+    padding: .5rem;
+    border-radius: 50%;
 }
 
-.apiModel-one:hover {
-    background-color: rgb(206, 204, 204);
+.apiModel-one svg:hover {
+    background-color: rgb(238, 238, 238);
 }
 
 .apiModel-two {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+    gap: 1rem;
 }
 
 .apiModel-two h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: black;
 }
 
 .apiModel-two p {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(143, 143, 143);
 }
 
 .apiModel-three {
@@ -66,16 +73,23 @@
 
 .apiModel-three input {
     width: 100%;
-    padding: 0.5rem;
+    font-size: 1rem;
+    padding: 0.8rem;
     border: 1px solid #e4e4e4;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
-.apiModel-three button {
+.apiModel-four {
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 10px;
+}
+
+.apiModel-four button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
     background-color: black;
+    border: 1px solid #e4e4e4;
     color: white;
     cursor: pointer;
 }
