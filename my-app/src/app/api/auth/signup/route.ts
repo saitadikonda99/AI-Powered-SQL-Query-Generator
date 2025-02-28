@@ -7,6 +7,8 @@ export const POST = async (req: NextRequest) => {
         
         const { user } = await req.json();
 
+        console.log(user);
+
         const client = await clientPromise;
         const db = client.db('');
 

@@ -28,7 +28,7 @@ const authOptions: NextAuthOptions = {
     async signIn({ user }) {
       try {
         // Call the signup API route
-        const response = await fetch(`${process.env.NEXT_AUTH_URL}/auth/signup`, {
+        const response = await fetch(`${process.env.NEXT_AUTH_URL}/api/auth/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
