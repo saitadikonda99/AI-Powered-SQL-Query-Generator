@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { v4 as uuidv4 } from 'uuid';
+import clientPromise from "@/lib/mongodb";
 
 import ChatSession from "@/models/chatSession";
 
@@ -25,19 +25,25 @@ export const POST = async (req: NextRequest) => {
 
         const response = await model.generateContent(`${message}`);
 
+        const client = await clientPromise;
+        const db = client.db();
 
-        const chatSession = await ChatSession.findOne({ sessionId });
+        const chatSession = await db.collection("chatSessions").findOne({ sessionId });
         
+        if (!chatSession) {
+            return NextResponse.json({ message: "Chat session not found" }, { status: 404 });
+        }
 
         chatSession.messages.push({ role: "user", content: message });
-
         chatSession.messages.push({ role: "ai", content: response.response.text() });
 
-        await chatSession.save();
+        await db.collection("chatSessions").updateOne({ sessionId }, { $set: chatSession });
 
-        const aiResponse = await ChatSession.findOne({ sessionId });
+        const aiResponse = await db.collection("chatSessions").findOne({ sessionId });
 
-        return NextResponse.json({ response: aiResponse, sessionId }, { status: 200 });
+        console.log(aiResponse);
+
+        return NextResponse.json({ chatSession: aiResponse, sessionId }, { status: 200 });
 
     } catch (error) {
         console.error("Error generating SQL query:", error);

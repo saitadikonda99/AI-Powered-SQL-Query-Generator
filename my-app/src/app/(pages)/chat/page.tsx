@@ -53,15 +53,17 @@ const Page = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("/api/chat", { 
+      const response = await axios.post("/api/chat", { 
         message: message, 
         apiKey: geminiApiKey
       }, { 
         headers: { "Content-Type": "application/json" } 
       });
 
-      setResponse(res.data.response);
+      setResponse(response.data.response);
       setMessage("");
+      router.push(`/chat/${response.data.sessionId}`);
+
     } catch (error: any) {
       toast.error(error.response.data.message);
       setResponse("Error: Unable to fetch response. Try again.");
@@ -117,17 +119,11 @@ const Page = () => {
             <div className="chat-two-two">
               {isLoading ? (
                 <div className="chat-loading">⏳ Generating response....</div>
-              ) : response ? (
-                <div className="chat-response">
-                  <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-                    {response}
-                  </ReactMarkdown>
-                </div>
-              ) : (
+              ) : 
                 <div className="chat-placeholder">
                   <h1>What can I help with?</h1>
                 </div>
-              )}
+              }
 
               <div className="chat-input-container">
                 <input

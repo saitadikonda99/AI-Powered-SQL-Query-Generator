@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { v4 as uuidv4 } from 'uuid';
+import clientPromise from "@/lib/mongodb";
 
 import ChatSession from "@/models/chatSession";
 
@@ -20,13 +21,13 @@ export const POST = async (req: NextRequest) => {
             return NextResponse.json({ error: "Invalid API key check again" }, { status: 401 });
         }
 
-
-
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
         const response = await model.generateContent(`${message}`);
 
-        
+        const client = await clientPromise;
+        const db = client.db();
+
         const chatSession = new ChatSession({
             sessionId: uuidv4(),
             messages: []
@@ -36,9 +37,11 @@ export const POST = async (req: NextRequest) => {
 
         chatSession.messages.push({ role: "ai", content: response.response.text() });
 
-        await chatSession.save();
+        await db.collection("chatSessions").insertOne(chatSession);
 
-        const aiResponse = await ChatSession.findOne({ sessionId: chatSession.sessionId });
+        console.log("chatSession", chatSession);
+
+        const aiResponse = await db.collection("chatSessions").findOne({ sessionId: chatSession.sessionId });
 
         return NextResponse.json({ response: aiResponse, sessionId: chatSession.sessionId }, { status: 200 });
 

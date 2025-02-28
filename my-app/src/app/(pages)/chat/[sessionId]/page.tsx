@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css"; 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
 import { useSession } from "next-auth/react";
@@ -15,6 +15,12 @@ import { FaStopCircle } from "react-icons/fa";
 import { FaCircleArrowUp } from "react-icons/fa6";
 import "../page.css";
 
+// Add interface for chat message
+interface ChatMessage {
+  role: string;
+  content: string;
+}
+
 const Page = () => {
 
   const [isOpen, setIsOpen] = useState(true);
@@ -22,14 +28,39 @@ const Page = () => {
   const [response, setResponse] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false); 
 
-  const [geminiApiKey, setGeminiApiKey] = useState("");
+  const [userChat, setUserChat] = useState<ChatMessage[]>([]);
+  const [aiChat, setAiChat] = useState<ChatMessage[]>([]);
 
+  
+  const router = useRouter();
+
+  const [geminiApiKey, setGeminiApiKey] = useState("");
 
   const { status, data: session } = useSession();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
+
+  const { sessionId } = useParams();
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const response = await axios.get(`/api/history?sessionId=${sessionId}`);
+
+        console.log(response.data)
+        setUserChat(response.data.chatSession.messages.filter((msg: any) => msg.role === "user"));
+        setAiChat(response.data.chatSession.messages.filter((msg: any) => msg.role === "ai"));
+        
+      } catch (error) {
+        toast.error("Error fetching chat session");
+      }
+    }
+    if (sessionId) {
+      fetch();
+    }
+  }, [sessionId]);  
   
 
   useEffect(() => {
@@ -52,24 +83,28 @@ const Page = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("/api/chat", { 
-        message: message, 
-        apiKey: geminiApiKey
+      const response = await axios.post(`/api/chat/${sessionId}`, { 
+        message: message,
+        apiKey: geminiApiKey,
+        sessionId: sessionId
       }, { 
         headers: { "Content-Type": "application/json" } 
       });
 
-      setResponse(res.data.response);
       setMessage("");
+
+      // Update chat messages from the response
+      setUserChat(response.data.chatSession.messages.filter((msg: any) => msg.role === "user"));
+      setAiChat(response.data.chatSession.messages.filter((msg: any) => msg.role === "ai"));
+
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Error processing your request");
       setResponse("Error: Unable to fetch response. Try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const router = useRouter();
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -114,20 +149,29 @@ const Page = () => {
             </div>
 
             <div className="chat-two-two">
-              {isLoading ? (
-                <div className="chat-loading">⏳ Generating response....</div>
-              ) : response ? (
                 <div className="chat-response">
-                  <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
-                    {response}
-                  </ReactMarkdown>
+                  {userChat.map((msg, index) => (
+                    <React.Fragment key={index}>
+                      <div className="chat-response-one">
+                        <div className="chat-response-one-one">
+                          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                            {msg.content}
+                          </ReactMarkdown>
+                        </div>
+                      </div>
+                      {aiChat[index] && (
+                        <div className="chat-response-two">
+                          <div className="chat-response-two-one">
+                            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                              {aiChat[index].content}
+                            </ReactMarkdown>
+                          </div>
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </div>
-              ) : (
-                <div className="chat-placeholder">
-                  <h1>What can I help with?</h1>
-                </div>
-              )}
-
+                {isLoading && <p>Thinking....</p>}
               <div className="chat-input-container">
                 <input
                   type="text"

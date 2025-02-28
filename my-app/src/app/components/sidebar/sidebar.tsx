@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation';
 import './sidebar.css'
 import { LuPanelLeftClose } from "react-icons/lu";
 import { LuPanelRightClose } from "react-icons/lu";
@@ -27,6 +28,12 @@ const Sidebar = ({isOpen, setIsOpen}: handlers) => {
         setOpenApiModel(true);
     };
 
+    const router = useRouter();
+
+    const handleChat = () => {
+        router.push('/chat');
+    }
+
     return (
         <div className={`SidebarComponent ${isOpen ? 'open' : 'closed'}`}>
             <div className="SidebarComponent-in">
@@ -36,7 +43,7 @@ const Sidebar = ({isOpen, setIsOpen}: handlers) => {
                     ) : (
                         <LuPanelRightClose onClick={handleSidebar} />
                     )}
-                    <PiNotePencilBold />
+                    <PiNotePencilBold onClick={handleChat}/>
                 </div>
                 {isOpen && (
                     <div className="sidebar-two">
