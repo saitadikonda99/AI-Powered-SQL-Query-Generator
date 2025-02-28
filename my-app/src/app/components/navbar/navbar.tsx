@@ -24,6 +24,7 @@ const Navbar = ({ openSignModel, setOpenSignModel}: handlers) => {
         <div className="NavbarComponent-in">
             <div className="navbar-one">
                 <h1>OpenQuery <span>AI</span> </h1>
+                <p>{process.env.NEXT_AUTH_URL}</p>
             </div>
             <div className="navbar-two">
                 {session ? (
