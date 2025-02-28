@@ -10,7 +10,7 @@ interface AuthModelProps {
 
 const AuthModel = ({ setOpenSignModel }: AuthModelProps) => {
     
-    const handleBackgroundClick = (e: React.MouseEvent) => {
+    const handleBackgroundClick = () => {
         setOpenSignModel(false);
     };
     const handleAuth = () => {

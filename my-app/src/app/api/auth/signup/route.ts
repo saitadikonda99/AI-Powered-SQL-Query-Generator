@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import User from "@/models/userScheme";
 
-export const POST = async (req: NextRequest, res:NextResponse) => {
+export const POST = async (req: NextRequest) => {
     try {
         
         const { user } = await req.json();
@@ -14,11 +15,8 @@ export const POST = async (req: NextRequest, res:NextResponse) => {
         console.log(existingUser)
 
         if (!existingUser) {
-            await db.collection("users").insertOne({
-                name: user.name,
-                email: user.email,
-                createdAt: new Date(),
-            });
+            const newUser = new User(user);
+            await db.collection("users").insertOne(newUser);
         }
 
         return NextResponse.json({ message: 'login successful', status: 200});

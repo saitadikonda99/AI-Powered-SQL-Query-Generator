@@ -6,7 +6,7 @@ import { LuPanelRightClose } from "react-icons/lu";
 import { PiNotePencilBold } from "react-icons/pi";
 import { IoLogOutOutline } from "react-icons/io5";
 
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import ApiModel from '../apiModel/apiModel';
 
 type handlers = {

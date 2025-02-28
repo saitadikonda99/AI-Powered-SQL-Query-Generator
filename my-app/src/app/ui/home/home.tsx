@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import './home.css'
 
 import { MdArrowOutward } from "react-icons/md";
 import { useSession } from "next-auth/react";
 
-import AuthModel from '@/app/components/authModel/authModel';
 
 interface handlers {
     openSignModel: boolean;
@@ -17,7 +15,7 @@ interface handlers {
 const Home = ({ openSignModel, setOpenSignModel}: handlers) => {
   const [hoverEffect, setHoverEffect] = useState('bend-right');
 
-  const {status, data: session} = useSession();
+  const { status } = useSession();
 
   const handleMouseEnter = () => {
     // Cycle through all four directions

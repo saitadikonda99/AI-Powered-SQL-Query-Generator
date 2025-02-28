@@ -25,7 +25,7 @@ const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user }) {
       try {
         // Call the signup API route
         const response = await fetch(`http://localhost:3000/api/auth/signup`, {

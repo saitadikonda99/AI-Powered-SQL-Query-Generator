@@ -23,7 +23,7 @@ const ApiModel = ({ setOpenApiModel }: apiModelProps) => {
         setApiKey("");
     } 
 
-    const handleApiModel = (e: React.MouseEvent) => {
+    const handleApiModel = () => {
         setOpenApiModel(false);
     }
 
@@ -35,7 +35,7 @@ const ApiModel = ({ setOpenApiModel }: apiModelProps) => {
                 </div>
                 <div className="apiModel-two">
                     <h1>Enter you Gemini api key from Google AI Studio</h1>
-                    <p>We don't store your API keys. They are securely stored in your browser's local storage.</p>
+                    <p>We don&apos;t store your API keys. They are securely stored in your browser&apos;s local storage.</p>
                 </div>
                 <div className="apiModel-three">
                     <input 

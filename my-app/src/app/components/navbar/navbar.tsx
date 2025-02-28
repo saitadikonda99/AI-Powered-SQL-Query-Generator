@@ -1,16 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image';
 import { useSession, signOut } from "next-auth/react";
 
 import './navbar.css';
-
-interface UserData {
-    name: string;
-    email: string;
-    password: string;
-}
 
 interface handlers {
     openSignModel: boolean;
@@ -19,16 +13,7 @@ interface handlers {
 
 const Navbar = ({ openSignModel, setOpenSignModel}: handlers) => {
 
-    const [userData, setUserData] = useState<UserData | null>(null);
-
     const { data: session } = useSession();
-
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-          const storedData = localStorage.getItem("userData");
-          setUserData(storedData ? JSON.parse(storedData) : null);
-        }
-      }, []);
 
       const handleAuth = () => {
         setOpenSignModel(!openSignModel);
