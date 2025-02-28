@@ -31,13 +31,13 @@ const Page = () => {
     setMessage(e.target.value);
   };
   
-  const apiKey: string | null = localStorage.getItem("GEMINI_API_KEY");
 
   useEffect(() => {
-    // Get API key from localStorage when component mounts
-    const storedApiKey = localStorage.getItem("GEMINI_API_KEY");
-    if (storedApiKey) {
-      setGeminiApiKey(storedApiKey);
+    if (typeof window !== "undefined") {
+      const storedApiKey = localStorage.getItem("GEMINI_API_KEY");
+      if (storedApiKey) {
+        setGeminiApiKey(storedApiKey);
+      }
     }
   }, []);
 
