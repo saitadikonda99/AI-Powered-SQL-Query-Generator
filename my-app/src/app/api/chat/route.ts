@@ -21,9 +21,11 @@ export const POST = async (req: NextRequest) => {
             return NextResponse.json({ error: "Invalid API key check again" }, { status: 401 });
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+       const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
         const response = await model.generateContent(`${message}`);
+
+        console.log("AI Response:", response.response.text());
 
         const client = await clientPromise;
         const db = client.db();
